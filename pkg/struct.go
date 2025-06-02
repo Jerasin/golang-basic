@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"reflect"
+
+	"github.com/goforj/godump"
 )
 
 type Location struct {
@@ -154,10 +156,43 @@ func structCase5() {
 
 }
 
+// Convert Map To Struct
+func structCase6() {
+	jsonData := map[string]any{
+		"name": "Jin",
+		"age":  30,
+		"address": map[string]any{
+			"province": "กรุงเทพ",
+			"amphure":  "ลาดพร้าว",
+			"location": map[string]any{
+				"lat": 1.1,
+				"lng": 2.2,
+			},
+		},
+	}
+	byteData, err := json.Marshal(jsonData)
+	if err != nil {
+		fmt.Println("Error marshalling JSON:", err)
+		return
+	}
+
+	// godump.Dump("byteData", byteData)
+
+	var people People
+	err = json.Unmarshal(byteData, &people)
+	if err != nil {
+		fmt.Println("Error unmarshalling JSON:", err)
+		return
+	}
+
+	godump.Dump("people", people)
+}
+
 func RunStruct() {
 	// structCase1()
 	// structCase2()
 	// structCase3()
 	// structCase4()
-	structCase5()
+	// structCase5()
+	structCase6()
 }

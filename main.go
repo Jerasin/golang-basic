@@ -64,6 +64,7 @@ func main() {
 	// fmt.Println("val", string(val))
 
 	// pkg.RunForLoop()
-	pkg.RunGeneric()
+	// pkg.RunGeneric()
+	pkg.RunStruct()
 
 }
