@@ -3,6 +3,7 @@ package pkg
 import (
 	"encoding/json"
 	"fmt"
+	"learn/helper"
 	"reflect"
 
 	"github.com/goforj/godump"
@@ -170,21 +171,8 @@ func structCase6() {
 			},
 		},
 	}
-	byteData, err := json.Marshal(jsonData)
-	if err != nil {
-		fmt.Println("Error marshalling JSON:", err)
-		return
-	}
-
-	// godump.Dump("byteData", byteData)
-
 	var people People
-	err = json.Unmarshal(byteData, &people)
-	if err != nil {
-		fmt.Println("Error unmarshalling JSON:", err)
-		return
-	}
-
+	helper.ConvertMapToStruct(&people, jsonData)
 	godump.Dump("people", people)
 }
 

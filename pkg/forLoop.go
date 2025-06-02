@@ -1,8 +1,8 @@
 package pkg
 
 import (
-	"encoding/json"
 	"fmt"
+	"learn/helper"
 
 	"github.com/goforj/godump"
 )
@@ -10,21 +10,6 @@ import (
 type Test struct {
 	Name string
 	Age  int
-}
-
-func ConvertMapToStruct(structType any, data any) error {
-	bytes, err := json.Marshal(data)
-	if err != nil {
-		return err
-	}
-
-	err = json.Unmarshal(bytes, &structType)
-	if err != nil {
-		return err
-	}
-
-	return nil
-
 }
 
 func forLoopEx1() {
@@ -66,6 +51,7 @@ func forLoopEx4() {
 	godump.Dump(testList)
 }
 
+// Convert SliceMap To Struct
 func forLoopEx5() {
 	arrMap := []map[string]any{
 		{"name": "Ali", "age": 20},
@@ -73,9 +59,8 @@ func forLoopEx5() {
 		{"name": "Sara", "age": 25},
 	}
 
-	// แปลง JSON ไปเป็น []Test
 	var testList []Test
-	err := ConvertMapToStruct(&testList, arrMap)
+	err := helper.ConvertMapToStruct(&testList, arrMap)
 
 	if err != nil {
 		fmt.Println("Error converting map to struct:", err)
@@ -83,7 +68,7 @@ func forLoopEx5() {
 	}
 
 	var test Test
-	err2 := ConvertMapToStruct(&test, arrMap[0])
+	err2 := helper.ConvertMapToStruct(&test, arrMap[0])
 	if err2 != nil {
 		fmt.Println("Error converting map to struct:", err2)
 		return
@@ -91,24 +76,15 @@ func forLoopEx5() {
 	godump.Dump(test)
 }
 
-func appendSlice(slice []string, item string) []string {
-	slice = append(slice, item)
-	return slice
-}
-
-func appendSlice2(slice *[]string, item string) {
-	*slice = append(*slice, item)
-}
-
 func forLoopEx6() {
 	item := []string{"item1", "item2", "item3"}
-	data := appendSlice(item, "new item")
+	data := helper.AppendSlice(item, "new item")
 	godump.Dump(data)
 }
 
 func forLoopEx7() {
 	item := []string{"item1", "item2", "item3"}
-	appendSlice2(&item, "new item")
+	helper.AppendSlice2(&item, "new item")
 	godump.Dump(item)
 }
 
