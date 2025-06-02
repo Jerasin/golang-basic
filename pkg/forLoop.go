@@ -43,7 +43,7 @@ func forLoopEx2() {
 func forLoopEx3() {
 	isExist := 0
 	for isExist < 5 {
-		fmt.Printf("isExist = %d \n", isExist)
+		fmt.Printf("while loop = %d \n", isExist)
 		isExist++
 	}
 }
@@ -91,10 +91,32 @@ func forLoopEx5() {
 	godump.Dump(test)
 }
 
+func appendSlice(slice []string, item string) []string {
+	slice = append(slice, item)
+	return slice
+}
+
+func appendSlice2(slice *[]string, item string) {
+	*slice = append(*slice, item)
+}
+
+func forLoopEx6() {
+	item := []string{"item1", "item2", "item3"}
+	data := appendSlice(item, "new item")
+	godump.Dump(data)
+}
+
+func forLoopEx7() {
+	item := []string{"item1", "item2", "item3"}
+	appendSlice2(&item, "new item")
+	godump.Dump(item)
+}
+
 func RunForLoop() {
 	// forLoopEx1()
 	// forLoopEx2()
 	// forLoopEx3()
 	// forLoopEx4()
-	forLoopEx5()
+	// forLoopEx6()
+	forLoopEx7()
 }
