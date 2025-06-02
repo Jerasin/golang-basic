@@ -11,7 +11,7 @@ func output(wg *sync.WaitGroup, msg string) {
 	fmt.Println(msg)
 }
 
-func ex1() {
+func goRoutineEx1() {
 	// Declare a waitgroup
 	var wg sync.WaitGroup
 
@@ -27,7 +27,7 @@ func ex1() {
 	wg.Wait()
 }
 
-func ex2() {
+func goRoutineEx2() {
 	// Declare a waitgroup
 	var wg sync.WaitGroup
 
@@ -52,7 +52,7 @@ func ex2() {
 	wg.Wait()
 }
 
-func ex3() {
+func goRoutineEx3() {
 	// Declare a waitgroup
 	var wg sync.WaitGroup
 
@@ -71,7 +71,7 @@ func ex3() {
 	wg.Wait()
 }
 
-func ex4() {
+func goRoutineEx4() {
 	// Declare a waitgroup
 	var wg sync.WaitGroup
 
@@ -90,7 +90,7 @@ func ex4() {
 
 }
 
-func ex5() {
+func goRoutineEx5() {
 	arr1 := []int{
 		1, 2, 3, 4, 5, 6,
 	}
@@ -128,7 +128,7 @@ func ex5() {
 	fmt.Println(sum2)
 }
 
-func ex6() {
+func goRoutineEx6() {
 	result1 := make(chan string)
 	result2 := make(chan string)
 
@@ -161,5 +161,5 @@ func RunGoRoutine() {
 	// ex3()
 	// ex4()
 	// ex5()
-	ex6()
+	goRoutineEx6()
 }
