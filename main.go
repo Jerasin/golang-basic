@@ -8,6 +8,6 @@ func main() {
 
 	// pkg.RunForLoop()
 	// pkg.RunGeneric()
-	pkg.RunStruct()
+	pkg.Run()
 
 }

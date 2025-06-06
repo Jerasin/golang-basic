@@ -1,9 +1,12 @@
 package pkg
 
 import (
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/goforj/godump"
 )
 
 var Name string
@@ -40,6 +43,36 @@ func sliceCase1() {
 	fmt.Println("numbers2", numbers)
 
 	fmt.Println("sliceMap", sliceMap)
+}
+
+func sliceCase2() {
+	type People struct {
+		Name string
+		Age  int16
+	}
+	sliceMap := []map[string]any{{
+		"name": "Jin",
+		"age":  10,
+	},
+		{
+			"name": "Jame",
+			"age":  20,
+		},
+	}
+
+	x, err := json.Marshal(sliceMap)
+
+	if err != nil {
+		panic(err)
+	}
+	var people []People
+
+	if err := json.Unmarshal(x, &people); err != nil {
+		panic(err)
+	}
+
+	godump.Dump((people))
+
 }
 
 func mapCase1() {
@@ -104,6 +137,6 @@ func Run() {
 
 	// const str = "Hello,World"
 	// removeSymbol(str)
-
-	fmt.Printf("float64 = %f \n", convertStrToFloat(1234))
+	sliceCase2()
+	// fmt.Printf("float64 = %f \n", convertStrToFloat(1234))
 }
